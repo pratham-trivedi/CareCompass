@@ -20,5 +20,5 @@ app.use("/api/test", testRoute);
 app.use("/api/googledata", googledataRoute)
 
 app.listen(5100, () => {
-    console.log("This is a test");
+    console.log("Server is readyt");
 });
