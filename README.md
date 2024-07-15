@@ -10,7 +10,7 @@ misinformation is cutdown and the process of finding the right hospital is made 
 CareCompass uses a simple search and filter to find the hospitals near you from its database and google map api.
 The care feature fullfills the requirement of intel training program. Further features are to be added.
 
-#Technologies
+# Technologies
 CareCompass is built using MERN stack that is Mongodb for data storage, React for frontend,
 Express for api and routing, Node js as environmemt along with other libraries like Prisma,
 Google react api, google node api, axios, cors etc
