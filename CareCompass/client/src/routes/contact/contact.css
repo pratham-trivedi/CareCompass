@@ -1,0 +1,78 @@
+.contactPage{
+    display: flex;
+    height: 100%;
+}
+
+.contactPage .textContain{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.contactPage .textContain .title{
+    font-size: 45px;
+}
+
+.contactPage .textContain .boxes{
+    display: flex;
+    gap:75px
+}
+
+.contactPage .textContain h1{
+    font-size: 30px;
+}
+
+.contactPage .textContain h2{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.contactPage .imageContain{
+    flex: 2;
+    background-color: #37B7C3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.contactPage .homeImage{
+    width: 100% ;
+    height: auto;
+}
+
+@media (max-width : 1366px) {
+
+    .contactPage .imageContain{
+        width: 100px;
+    }
+}
+
+@media (max-width : 1024px) {
+
+    .contactPage .imageContain{
+        display: none;
+    }
+}
+
+@media (max-width : 736px) {
+
+    .contactPage .textContain .boxes{
+        display: none;
+    }
+}
+
+
+
+
+.contactPage .CareLogo{
+    position: relative;
+    margin-top: -100px;
+    margin-right: 400px;
+    width: 20%;
+    height: auto;
+}
+

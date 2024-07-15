@@ -1,0 +1,74 @@
+.aboutPage{
+    display: flex;
+    height: 100%;
+}
+
+.aboutPage .textContain{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+}
+
+.aboutPage .textContain .title{
+    font-size: 45px;
+}
+
+
+.aboutPage .textContain h1{
+    font-size: 30px;
+}
+
+.aboutPage .textContain h2{
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.aboutPage .imageContain{
+    flex: 2;
+    background-color: #37B7C3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.aboutPage .homeImage{
+    width: 100% ;
+    height: auto;
+}
+
+@media (max-width : 1366px) {
+
+    .homePage .imageContain{
+        width: 100px;
+    }
+}
+
+@media (max-width : 1024px) {
+
+    .homePage .imageContain{
+        display: none;
+    }
+}
+
+@media (max-width : 736px) {
+
+    .homePage .textContain .boxes{
+        display: none;
+    }
+}
+
+
+
+
+.aboutPage .CareLogo{
+    position: relative;
+    margin-top: -100px;
+    margin-right: 400px;
+    width: 20%;
+    height: auto;
+}
+
