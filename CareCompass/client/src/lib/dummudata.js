@@ -195,18 +195,18 @@ export const reviewData = {
     text: [
         {
             rate: 4,
-            By: "John 1",
+            By: "John 1 (dummy)",
             text: "Best Hospital Man"
         },
         {
             rate: 4,
-            By: "John 2",
+            By: "John 2 (dummy)",
             text: "Most Amazing place ever"
         },
         {
             rate: 5,
-            By: "John 4",
-            text: "What is the name of that nurse with red"
+            By: "John 4 (dummy)",
+            text: "What is the name of that nurse with red hair"
         },
     ]
 }
