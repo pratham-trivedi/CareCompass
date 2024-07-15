@@ -18,8 +18,8 @@ function Navbar() {
           <img src="/public/images/CareCompass_logo.png" />
         </a>
         <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
         <a href="/addhospital">For Hospitals</a>
       </div>
       <div className='right'>
@@ -40,9 +40,9 @@ function Navbar() {
         </div>
         <div className={open ? "menu active" : "menu"}>
           <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/addhospital">Contact</a>
-          <a href="/">For Hospitals</a>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/addhospital">For Hospitals</a>
           {currentUser ? (
               <a href="/profile" className="profile">{currentUser.name}</a>
           ) : (
