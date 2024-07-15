@@ -19,7 +19,7 @@ then to start the server type the following
 ```
 node --env-file app.js
 ```
-
+open another terminal
 then navigate to client folder
 ```
 cd ..
@@ -30,3 +30,5 @@ Repeat the above steps
 npm install
 npm run dev
 ```
+
+Open browser and visit the site mentioned in vite terminal
