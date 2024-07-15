@@ -1,0 +1,35 @@
+.review{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review h1{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.reviewCard{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.reviewDetail{
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.reviewDetail .txt{
+    font-size: 22px;
+}
+
+.reviewDetail.name{
+    font-size: 28px;
+}

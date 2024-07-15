@@ -1,0 +1,22 @@
+
+
+
+@media (max-width : 1366px) {
+    .Layout{
+        max-width: 1288px;
+    }
+}
+
+
+
+@media (max-width : 1024px) {
+    .Layout{
+        max-width: 768px;
+    }
+}
+
+@media (max-width : 738px) {
+    .Layout{
+        max-width: 640px;
+    }
+}

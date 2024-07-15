@@ -1,0 +1,154 @@
+.singlePage{
+    display: flex;
+    height: 100%;
+}
+
+@media (max-width: 1024px){
+
+    .singlePage{
+        font-size: 12px;
+        flex-direction: column;
+        overflow-y: scroll;
+    }
+
+}
+
+.singlePage .details{
+    flex: 4;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+@media (max-width: 1024px){
+    .singlePage .details{
+        padding-left: 10px;
+        flex: none;
+        height: max-content;
+    }
+}
+
+.singlePage .details .wrapper{
+    padding: 50px;
+}
+
+
+.singlePage .features{
+    flex: 2;
+    background-color: #37B7C3;
+}
+
+.singlePage .features .wrapper{
+    padding: 0px 20px;
+}
+
+.info .text{
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+}
+
+.info .text .post{
+    margin-left: -100px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info .text .post .rate
+{
+    background-color: #37B7C3;
+    border: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+
+}
+
+.info .text .btn{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info .text .btn button{
+    width: 85;
+    height: 50px;
+    background-color: white;
+    border: 2px solid #37B7C3;
+    border-radius: 10px;
+    transition: transform 0.4s ease;
+}
+
+.info .text .btn button:hover{
+    color: white;
+    background-color: #37B7C3;
+    transform: scale(1.1);
+}
+
+
+.info .text .post .address{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    color: #888;
+    font-size: 18px;
+}
+
+
+
+.features .wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    gap: 30px;
+    overflow-y: scroll;
+}
+
+@media (max-width: 1024px){
+    .singlePage .features{
+        flex: none;
+        height: max-content;
+        overflow-y: hidden;
+    }
+}
+
+
+.wrapper .map{
+    width: 100%;
+    height: 300px;
+
+}
+
+.wrapper .information{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: auto;
+    height: 200px;
+}
+
+
+.wrapper .information h1{
+    font-weight: 400;
+    font-size: 22px;
+}
+
+.wrapper .information h3{
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.wrapper .information .contact,.timing{
+    background-color: #EBF4F6;
+    padding: 10px;
+}
+
+.wrapper .information .contact{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

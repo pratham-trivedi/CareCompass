@@ -1,0 +1,52 @@
+.filter{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter h1{
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.filter .item{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.filter .item label{
+    font-size: 10px;
+}
+
+.filter .item input,select{
+    width: 100px;
+    padding: 10px;
+    border: solid 1px black;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+.filter .top input{
+    width: 100%;
+}
+
+
+.filter .bottom {
+    display: flex;
+    gap: 50px;
+}
+
+.filter .bottom button{
+    width: 75px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background-color: #071952;
+}
+
+.filter .bottom button img{
+    width: 30px;
+    height: 30px;
+}

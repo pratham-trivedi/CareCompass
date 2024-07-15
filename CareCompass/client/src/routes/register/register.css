@@ -1,0 +1,56 @@
+.registerPage {
+    height: 100%;
+    display: flex;
+  }
+  
+  .registerPage .formContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .registerPage .formContainer form {
+    margin-top: 50px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .registerPage .formContainer form input {
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  .registerPage .formContainer form button {
+    width: 200px;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #37B7C3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .registerPage .formContainer form button:disabled {
+    background-color: #bed9d8;
+    cursor: not-allowed;
+  }
+  
+  .registerPage .formContainer form span {
+    color: rgba(255, 0, 0, 0.591);
+  }
+  
+  .registerPage .formContainer form a {
+    font-size: 14px;
+    color: gray;
+    border-bottom: 1px solid gray;
+    width: max-content;
+  }
+  

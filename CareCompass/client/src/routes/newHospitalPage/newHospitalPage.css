@@ -1,0 +1,90 @@
+.newPostPage {
+    height: 100%;
+    display: flex;
+  }
+
+  .newPostPage .warning{
+    color: red;
+  }
+  
+  .newPostPage .formContainer {
+    flex: 3;
+    overflow-y: scroll;
+  }
+  
+  .newPostPage .wrapper {
+    margin: 30px 50px 100px 0px;
+  }
+  
+  .newPostPage form {
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .newPostPage .item {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .newPostPage .fullWidth {
+    width: 100%;
+  }
+
+.formContainer .wrapper span{
+    font-size: 20px;
+    color: red;
+  }
+  
+  .newPostPage label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .newPostPage div input {
+    width: 150px;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+
+  .newPostPage div #address,#name{
+    width: 350px
+  }
+  
+  .newPostPage .sendButton {
+    width: 30%;
+    border-radius: 5px;
+    height: 50px;
+    border: none;
+    background-color: #37B7C3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .newPostPage .sideContainer {
+    overflow-y: scroll;
+    object-fit: contain;
+    flex: 2;
+    background-color: #37B7C3;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .sideContainer img{
+    width: 300px;
+    height: auto;
+  }
+
+
+  
+  

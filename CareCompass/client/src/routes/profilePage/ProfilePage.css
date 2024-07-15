@@ -1,0 +1,56 @@
+.profilePage{
+    display: flex;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
+.profilePage .details{
+    margin-top: 30px;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+
+.profilePage .details .title{
+    display: flex;
+    align-items: center;
+    margin-left: -30px;
+    justify-content: space-around;
+}
+
+
+.profilePage .details .info{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.profilePage .details .info button{
+    width: 100px;
+    padding: 12px 24px;
+    background-color: #071952;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+.profilePage .details .title h1{
+    font-weight: 400;
+}
+.profilePage .details .title button{
+    padding: 12px 24px;
+    background-color: #37B7C3;
+    cursor: pointer;
+    border: none;
+    transition: all 0.4s ease;
+}
+
+
+
+.profilePage .details .title button:hover{
+    transform: scale(1.1);
+}

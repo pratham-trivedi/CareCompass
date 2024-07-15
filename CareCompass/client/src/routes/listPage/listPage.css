@@ -1,0 +1,23 @@
+.listPage{
+    display: flex;
+    height: 100%;
+}
+
+.listPage  .listContain{
+    flex: 3;
+}
+
+.listPage  .listContain .wrapper{
+    height: 100%;
+    padding-right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+}
+
+
+.listPage  .mapContain{
+    flex: 2;
+}

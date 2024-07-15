@@ -1,0 +1,42 @@
+
+
+@media (max-width : 1366px) {
+
+
+}
+
+
+@media (max-width : 1024px) {
+   nav .logo img{
+    margin-right: -50px;
+   }
+
+   nav .right .register{
+    margin-left: -30px;
+   }
+
+   nav .right .register{
+    background-color: transparent;
+    color:  #EBF4F6;
+   }
+}
+
+@media (max-width : 738px) {
+    nav a{
+        display: none;
+    }
+
+    nav .logo span{
+        display: initial;
+    }
+
+    nav .right .menuIcon{
+        display: inline;
+        z-index: 10;
+    }
+
+    nav .right .menu a{
+        display: initial;
+    }
+
+}
