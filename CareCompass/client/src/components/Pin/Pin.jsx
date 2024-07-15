@@ -16,15 +16,16 @@ function Pin ({hospital}){
     const [seeInfo, setSeeInfo] = useState(false);
     let pos = {lat: parseFloat(hospital.latitude), lng : parseFloat(hospital.longitude)};
     let status = open_now(hospital);
+    let goto = hospital.Gid ? `/g/${hospital.Gid}` : `/${hospital.id}`;
     return(
         <>
         <Marker position={pos} onClick={() => {setSeeInfo(true); console.log("clicked")}}/>
 
         {seeInfo && ( 
             <InfoWindow position={pos} onCloseClick={() => setSeeInfo(false)} className='infoContainer'>
-                <img src={hospital.photo} />
+                <img src={hospital.images[0]} />
                 <div className="text">
-                <Link to={`/${hospital.id}`} > {hospital.name} </Link>
+                <Link to={goto} > {hospital.name} </Link>
                 <span>{status == 'open' ? "Open Now" : "Closed"}</span>
                 </div>
             </InfoWindow>
