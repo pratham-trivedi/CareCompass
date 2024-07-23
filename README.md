@@ -31,7 +31,7 @@ npm i
 ```
 then to start the server type the following
 ```
-node --env-file app.js
+node --env-file .env app.js
 ```
 open another terminal
 then navigate to client folder
