@@ -74,3 +74,60 @@ export const getUser = async (req, res) => {
       res.status(500).json({ message: "Failed to delete users!" });
     }
   };
+
+
+  export const saveHospital = async (req, res) => {
+    const hospitalId = req.body.hospitalId;
+    const tokenUserId = req.userId;
+
+    try {
+
+      const savedHospital = await  prisma.savedHospital.findUnique({
+        where:{
+          userId_hospitalId:{
+            userId:tokenUserId,
+            hospitalId,
+          }
+        }
+      })
+
+      if(savedHospital){
+        await prisma.savedHospital.delete({
+          where: {
+            id: savedHospital.id,
+          },
+        })
+        res.status(200).json({ message: "Post Removed from saved list" });
+      }else{
+        await prisma.savedHospital.create({
+          data:{
+            userId: tokenUserId,
+            hospitalId, 
+          },
+        });
+        res.status(200).json({ message: "Post Saved" });
+      };
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: "Failed to delete users!" });
+    }
+  };
+
+
+  export const profileHospital = async (req, res) => {
+   const tokenUserId = req.params.userId;
+    try {
+      const userPosts = await prisma.savedHospital.findMany({
+        where: {userId : tokenUserId},
+        include: {
+          hospital: true,
+        }
+      });
+
+      const savedHospital = userPosts.map(item => item.hospital);
+      res.status(200).json(savedHospital);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: "Failed to get Saved Posts!" });
+    }
+  };

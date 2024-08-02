@@ -8,7 +8,6 @@ export const singlePageLoader = async ({request, params}) => {
 
 export const googleSinglePageLoader = async ({request, params}) => {
    const res = await apiRequest("/googledata/g/"+params.id)
-   console.log(res)
    return res.data;
 }
 
@@ -19,4 +18,13 @@ export const listPageLoader = async ({request, params}) => {
    return defer({
     postResponse:postPromise
    })
+}
+
+export const profilePageLoader = async ({request, params}) => {
+   const postPromise = await apiRequest("/users/profileHospitals")
+   
+   return defer({
+      postResponse : postPromise
+   })
+
 }

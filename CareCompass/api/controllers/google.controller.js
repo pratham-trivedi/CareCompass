@@ -30,7 +30,6 @@ export const getLatlong = async (req, res) => {
   export const getSingleHospital = async (req, res) => {
     const data = req.params.id;
     getPlaceDetails(data).then(hosp => {
-      console.log(hosp)
         const singleHosp = parsePlaceData(hosp);
         res.status(200).json(singleHosp);
     }).catch(

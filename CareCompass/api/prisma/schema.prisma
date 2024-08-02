@@ -20,7 +20,8 @@ model User{
   name      String
   password  String
   createdAt DateTime @default(now())
-  reviews Review[]
+  reviews   Review[]
+  saved     SavedHospital[]
 }
 
 model Hospital {
@@ -38,7 +39,8 @@ model Hospital {
   closetime  String
   speciality Speciality[]
   createdAt  DateTime    @default(now())
-  reviews    Review[] 
+  reviews    Review[]
+  saved      SavedHospital[]
 }
 
 enum Speciality {
@@ -54,6 +56,18 @@ enum Speciality {
   Gynecology
 }
 
+model SavedHospital{
+  id  String   @id @default(auto()) @map("_id") @db.ObjectId
+  user User    @relation(fields: [userId], references: [id])
+  hospital Hospital    @relation(fields: [hospitalId], references: [id])
+  userId     String   @db.ObjectId
+  hospitalId String   @db.ObjectId
+  createdAt  DateTime    @default(now())
+
+  @@unique([userId, hospitalId])
+
+}
+
 model Review {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   userId     String   @db.ObjectId
@@ -66,3 +80,5 @@ model Review {
   @@index([userId])
   @@index([hospitalId])
 }
+
+

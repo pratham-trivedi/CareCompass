@@ -1,12 +1,12 @@
 import prisma from "../lib/prisma.js";
 import { getCityFromCoordinates, getCoordinates, getNearbyHospitals } from "../lib/googleApi.js";
 import {getTime, parseHospitalData} from "../lib/other_functions.js"
-
+import jwt from "jsonwebtoken";
 
 export const getPosts = async (req, res) => {
   const query = req.query;
-  console.log(query);
   const currentTime = getTime();
+  let search = [];
 
   let lat=query.latitude, long=query.longitude, city=query.city;
   try {
@@ -17,13 +17,13 @@ export const getPosts = async (req, res) => {
     } else {
       city = await getCityFromCoordinates(lat, long);
     }
-  } catch (err) {
-    console.log(err);
-  }
 
-  console.log(lat, long, city);
-  const range = query.range ? query.range:5000;
-  const search = await getNearbyHospitals(lat, long, range);
+    const range = query.range ? query.range:5000;
+    search = await getNearbyHospitals(lat, long, range);
+
+  } catch (err) {
+    console.log("Error in post api");
+  }
 
 
   let specialityQuery = null;
@@ -65,8 +65,6 @@ export const getPosts = async (req, res) => {
     })
     .map(item => parseHospitalData(item));
     const combinedPosts = [...posts, ...parsedHospitals];
-
-    console.log(combinedPosts);
     
     res.status(200).json(combinedPosts);
   } catch (err) {
@@ -82,7 +80,28 @@ export const getPost = async (req, res) => {
       where: { id },
     });
 
-    res.status(200).json(post);
+    let userId;
+
+    const token = req.cookies?.token;
+    console.log(token);
+    if (token) {
+      jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
+        if (!err) {
+          const saved = await prisma.savedHospital.findUnique({
+            where: {
+              userId_hospitalId: {
+                hospitalId: id,
+                userId: payload.id
+              },
+            },
+          });
+          return res.status(200).json({ ...post, isSaved: saved ? true : false }); 
+        }
+      });
+    }else{
+      res.status(200).json(post);
+    }
+
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to get post" });

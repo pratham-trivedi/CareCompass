@@ -3,15 +3,17 @@ import List from '../../components/list/List'
 import Review from '../../components/reviews/Review'
 import "./ProfilePage.css"
 import apiRequest from "../../lib/apiRequest"
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react'
+import { Link, useNavigate, useLoaderData, Await } from 'react-router-dom';
+import { Suspense, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+
 
 function ProfilePage() {
 
     const navigate = useNavigate();
 
     const {currentUser,updateUser} = useContext(AuthContext);
+    const data = useLoaderData();
 
     const handleLogout = async () => {
         try {
@@ -38,6 +40,17 @@ function ProfilePage() {
             </div>
             <div className="saved">
                 <h1>Saved Posts</h1>
+                <Suspense fallback={<p>Loading...</p>}>
+            <Await 
+            resolve={data.postResponse}
+            errorElement={<p>Something went wrong</p>} >
+              
+            {(postResponse) => {
+              return (
+              <List listData={postResponse.data}/>
+          )}}
+          </Await>
+          </Suspense>
                 <List />
             </div>
             <div className="reviews">
