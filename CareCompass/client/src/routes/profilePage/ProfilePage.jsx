@@ -6,6 +6,7 @@ import apiRequest from "../../lib/apiRequest"
 import { Link, useNavigate, useLoaderData, Await } from 'react-router-dom';
 import { Suspense, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { reviewData } from '../../lib/dummudata';
 
 
 function ProfilePage() {
@@ -38,25 +39,34 @@ function ProfilePage() {
                 <span>E-mail : <b>{currentUser.email}</b></span>
             <button onClick={handleLogout}>Logout</button>
             </div>
-            <div className="saved">
-                <h1>Saved Posts</h1>
+
                 <Suspense fallback={<p>Loading...</p>}>
             <Await 
             resolve={data.postResponse}
             errorElement={<p>Something went wrong</p>} >
               
             {(postResponse) => {
+              console.log(postResponse.userReview);
+              if(postResponse.savedHospital.data.length != 0){
               return (
-              <List listData={postResponse.data}/>
-          )}}
+                <>
+              <div className="saved">
+              <h1>Saved Hospitals</h1>
+              <List listData={postResponse.savedHospital.data}/>
+              </div>
+              <div className="reviews">
+                <h1>My Reviews</h1>
+                <Review review={postResponse.userReview.data} profileReview={true} />
+            </div>
+              </>
+          )}else{
+            return(
+            <p>You have not saved any Hospitals</p>
+          )}
+          
+          }}
           </Await>
           </Suspense>
-                <List />
-            </div>
-            <div className="reviews">
-                <h1>My Reviews</h1>
-                <Review />
-            </div>
         </div>
     </div>
   )

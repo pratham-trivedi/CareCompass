@@ -80,22 +80,33 @@ export const getPost = async (req, res) => {
       where: { id },
     });
 
-    let userId;
-
     const token = req.cookies?.token;
-    console.log(token);
     if (token) {
       jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
         if (!err) {
-          const saved = await prisma.savedHospital.findUnique({
+          const saved = await prisma.savedHospital.findFirst({
             where: {
-              userId_hospitalId: {
                 hospitalId: id,
                 userId: payload.id
               },
             },
+          );
+
+          const reviewed = await prisma.review.findFirst({
+            where: {
+              userId: payload.id,
+              hospitalId: id,
+            }
+          })
+
+          const allReviews = await prisma.review.findMany({
+            where: {hospitalId: id},
+            include : {
+              user : true,
+            }
           });
-          return res.status(200).json({ ...post, isSaved: saved ? true : false }); 
+
+          return res.status(200).json({ ...post, reviews: allReviews, userReview: reviewed ,isSaved: saved ? true : false}); 
         }
       });
     }else{

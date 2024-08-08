@@ -56,29 +56,27 @@ enum Speciality {
   Gynecology
 }
 
-model SavedHospital{
-  id  String   @id @default(auto()) @map("_id") @db.ObjectId
-  user User    @relation(fields: [userId], references: [id])
-  hospital Hospital    @relation(fields: [hospitalId], references: [id])
-  userId     String   @db.ObjectId
-  hospitalId String   @db.ObjectId
-  createdAt  DateTime    @default(now())
-
-  @@unique([userId, hospitalId])
+model SavedHospital {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  user            User    @relation(fields: [userId], references: [id])
+  hospital        Hospital? @relation(fields: [hospitalId], references: [id])
+  userId          String   @db.ObjectId
+  hospitalId      String?  @db.ObjectId
+  googlehospitalId String?
+  createdAt       DateTime @default(now())
 
 }
 
 model Review {
   id         String   @id @default(auto()) @map("_id") @db.ObjectId
   userId     String   @db.ObjectId
-  hospitalId String   @db.ObjectId
+  hospitalId String?   @db.ObjectId
+  googlehospitalId String?
   rating     Int
   ratingText String
   user       User     @relation(fields: [userId], references: [id])
-  hospital   Hospital  @relation(fields: [hospitalId], references: [id])
-
-  @@index([userId])
-  @@index([hospitalId])
+  hospital   Hospital?  @relation(fields: [hospitalId], references: [id])
+  createdAt  DateTime @default(now())
 }
 
 

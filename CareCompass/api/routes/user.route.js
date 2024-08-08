@@ -5,7 +5,7 @@ import {
   getUsers,
   updateUser,
   saveHospital,
-  profileHospital
+  profileHospital,
 } from "../controllers/user.controller.js";
 import {verifyToken} from "../middleware/verifyToken.js";
 

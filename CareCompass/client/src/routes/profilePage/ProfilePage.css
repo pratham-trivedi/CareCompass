@@ -17,7 +17,6 @@
 .profilePage .details .title{
     display: flex;
     align-items: center;
-    margin-left: -30px;
     justify-content: space-around;
 }
 

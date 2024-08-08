@@ -188,25 +188,20 @@ export const singlePostData = {
 };
 
 
-export const reviewData = {
-    id: 1909,
-    hospitalID: 1001,
-    count: 138,
-    text: [
+export const reviewData =  [
         {
-            rate: 4,
-            By: "John 1 (dummy)",
+            rating: 4,
+            author: "John 1 (dummy)",
             text: "Best Hospital Man"
         },
         {
-            rate: 4,
-            By: "John 2 (dummy)",
+            rating: 4,
+            author: "John 2 (dummy)",
             text: "Most Amazing place ever"
         },
         {
-            rate: 5,
-            By: "John 4 (dummy)",
+            rating: 5,
+            author: "John 4 (dummy)",
             text: "What is the name of that nurse with red hair"
         },
     ]
-}

@@ -18,6 +18,7 @@ function open_now(val) {
 function Card({ item }) {
   const status = open_now(item);
 
+
   const linkTo = item.Gid ? `/g/${item.Gid}` : `/${item.id}`;
   const linkText = item.name;
   return (

@@ -21,10 +21,10 @@ export const listPageLoader = async ({request, params}) => {
 }
 
 export const profilePageLoader = async ({request, params}) => {
-   const postPromise = await apiRequest("/users/profileHospitals")
-   
+   const hospitalPromise = await apiRequest("/users/profileHospitals");
+   const reviewPromise = await apiRequest("/review/profileReviews");
    return defer({
-      postResponse : postPromise
+      postResponse :{savedHospital: hospitalPromise, userReview : reviewPromise}
    })
 
 }

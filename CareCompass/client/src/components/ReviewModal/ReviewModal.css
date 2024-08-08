@@ -1,0 +1,108 @@
+.backgrnd {
+    z-index: 899;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContain {
+    color: white;
+    background-color: #37B7C3;
+    height: auto;
+    width: 400px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.charCount {
+    margin-top: -5px;
+    margin-bottom: 5px;
+    margin-left: 170px;
+    color: #6e6e6e;
+    font-size: 15px;
+
+  }
+  
+
+.close {
+    cursor: pointer;
+    align-self: flex-end;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    background-color: white;
+    border: none;
+    color: red;
+}
+
+.loginRedirect {
+    color: #071952;
+}
+
+.modalText {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.stars {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.star.filled {
+    color: gold;
+}
+
+.reviewInput {
+    width: 80%;
+    height: 80px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+.submitBtn {
+    background-color: white;
+    color: #37B7C3;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.deleteBtn{
+    background-color: rgb(235, 9, 9);
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+.error{
+    margin-top: 10px;
+    font-size: 20px;
+    color: red;
+}
