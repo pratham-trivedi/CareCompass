@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiRequest = axios.create({
-    baseURL: "http://localhost:5100/api",
+    baseURL: "https://carecompass-backend.onrender.com/api",
     withCredentials : true,
 });
 
