@@ -1,20 +1,66 @@
-import "./singlePage.css"
-import Slider from "../../components/slider/Slider"
-import Review from "../../components/reviews/Review"
-import Map from '../../components/map/Map'
+import "./singlePage.css";
+import Slider from "../../components/slider/Slider";
+import Review from "../../components/reviews/Review";
+import Map from '../../components/map/Map';
+import LoginModal from '../../components/loginModal/loginModal';
+import ReviewModal from "../../components/ReviewModal/ReviewModal";
+import {AuthContext} from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest";
 
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { useLoaderData } from "react-router-dom"
-
-const nullData = null;
+import { reviewData } from "../../lib/dummudata";
 
 function singlePage() {
+  const [showModal, setShowModal] = useState(false);
+  const [showReviewModal, setShowReviewModal] = useState(false);
+ 
 
   const hospital = useLoaderData();
-  console.log(hospital.reviews);
+
+  
+  const [saved, setSaved] =  useState(hospital.isSaved)
+  const [reviewed, setReviewed] =  useState(hospital.userReview ? true : false)
+
+  const {currentUser} = useContext(AuthContext);
+
+  const handleSave = async () => {
+    if(!currentUser){
+      setShowModal(true);
+      return;
+    }
+    try{
+      setSaved((prev) => !prev);
+      if(hospital.Gid){
+      await apiRequest.post("/googledata/save", {hospitalId: hospital.Gid})
+      }else{
+      await apiRequest.post("/users/save", {hospitalId: hospital.id})
+      }    
+    }catch(err) {
+      console.log(err);
+      setSaved((prev) => !prev);
+    }
+  }
+
+  const handleReview = async () => {
+
+    if(!currentUser){
+      setShowModal(true);
+      return;
+    }
+
+    if(hospital.Gid){
+      return;
+    }
+    
+    setShowReviewModal(true);
+    
+  }
 
   return (
     <div className="singlePage">
+      {showModal && <LoginModal onClose={ () => setShowModal(false)}/>}
+      {showReviewModal && <ReviewModal onClose={() => setShowReviewModal(false)} hospital={hospital} setReviewed={setReviewed}/>  }
       <div className="details">
         <div className="wrapper">
           <Slider images={hospital.images}/>
@@ -30,12 +76,15 @@ function singlePage() {
                 </div>
               </div>
               <div className="btn">
-                <button className="save">Save</button>
-                <button className="book">Book Appointment</button>
+                <button className="save" onClick={handleSave}>
+                  {saved ? "Hospital Saved" : "save"}</button>
+                <button className="book" onClick={handleReview}>
+                  {reviewed? "Edit your review" : "Leave a review"}
+                </button>
               </div>
             </div>
             <div className="review">
-              <Review review={hospital.reviews} />
+              {hospital.reviews ? (<Review review={hospital.reviews} />) : (<Review review={reviewData} />) }
             </div>
           </div>
         </div>

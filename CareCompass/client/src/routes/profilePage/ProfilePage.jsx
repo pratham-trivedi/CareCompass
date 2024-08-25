@@ -3,15 +3,18 @@ import List from '../../components/list/List'
 import Review from '../../components/reviews/Review'
 import "./ProfilePage.css"
 import apiRequest from "../../lib/apiRequest"
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react'
+import { Link, useNavigate, useLoaderData, Await } from 'react-router-dom';
+import { Suspense, useContext } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { reviewData } from '../../lib/dummudata';
+
 
 function ProfilePage() {
 
     const navigate = useNavigate();
 
     const {currentUser,updateUser} = useContext(AuthContext);
+    const data = useLoaderData();
 
     const handleLogout = async () => {
         try {
@@ -36,14 +39,34 @@ function ProfilePage() {
                 <span>E-mail : <b>{currentUser.email}</b></span>
             <button onClick={handleLogout}>Logout</button>
             </div>
-            <div className="saved">
-                <h1>Saved Posts</h1>
-                <List />
-            </div>
-            <div className="reviews">
+
+                <Suspense fallback={<p>Loading...</p>}>
+            <Await 
+            resolve={data.postResponse}
+            errorElement={<p>Something went wrong</p>} >
+              
+            {(postResponse) => {
+              console.log(postResponse.userReview);
+              if(postResponse.savedHospital.data.length != 0){
+              return (
+                <>
+              <div className="saved">
+              <h1>Saved Hospitals</h1>
+              <List listData={postResponse.savedHospital.data}/>
+              </div>
+              <div className="reviews">
                 <h1>My Reviews</h1>
-                <Review />
+                <Review review={postResponse.userReview.data} profileReview={true} />
             </div>
+              </>
+          )}else{
+            return(
+            <p>You have not saved any Hospitals</p>
+          )}
+          
+          }}
+          </Await>
+          </Suspense>
         </div>
     </div>
   )

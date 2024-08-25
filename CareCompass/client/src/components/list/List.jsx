@@ -1,12 +1,13 @@
 import React from 'react'
-import {listData} from "../../lib/dummudata"
+
 import Card from '../card/Card'
 import "./list.css"
 
-function List() {
+function List({listData}) {
+  console.log(listData);
   return (
     <div className="list">
-        {listData.map(item => (
+        {listData && listData.map(item => (
             <Card key={item.id} item={item}/>
         ))}
     </div>

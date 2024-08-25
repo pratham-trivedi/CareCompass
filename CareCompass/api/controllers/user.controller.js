@@ -1,3 +1,5 @@
+import { getPlaceDetails } from "../lib/googleApi.js";
+import { parseHospitalData } from "../lib/other_functions.js";
 import prisma from "../lib/prisma.js";
 import bcrypt from "bcrypt";
 
@@ -72,5 +74,80 @@ export const getUser = async (req, res) => {
     } catch (err) {
       console.log(err);
       res.status(500).json({ message: "Failed to delete users!" });
+    }
+  };
+
+
+  export const saveHospital = async (req, res) => {
+    const hospitalId = req.body.hospitalId;
+    const tokenUserId = req.userId;
+
+    try {
+      const savedHospital = await  prisma.savedHospital.findFirst({
+        where:{
+            userId:tokenUserId,
+            hospitalId,
+          }
+      })
+
+      if(savedHospital){
+        await prisma.savedHospital.delete({
+          where: {
+            id: savedHospital.id,
+          },
+        })
+        res.status(200).json({ message: "Post Removed from saved list" });
+      }else{
+        await prisma.savedHospital.create({
+          data:{
+            userId: tokenUserId,
+            hospitalId,
+            googlehospitalId: null,
+          },
+        });
+        res.status(200).json({ message: "Post Saved" });
+      };
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: "Failed to find saved post" });
+    }
+  };
+
+
+
+
+  export const profileHospital = async (req, res) => {
+
+
+   const tokenUserId = req.params.userId;
+    try {
+      const userPosts = await prisma.savedHospital.findMany({
+        where: {userId : tokenUserId},
+        include: {
+          hospital: true,
+        }
+      });
+
+      const savedHospitalPromises = userPosts.map(async (item) => {
+        if (item.googlehospitalId) {
+          try {
+            const placeDetails = await getPlaceDetails(item.googlehospitalId);
+            return parseHospitalData(placeDetails);
+          } catch (error) {
+            console.error('Error fetching place details:', error);
+            return null;
+          }
+        } else {
+          return item.hospital;
+        }
+      });
+  
+      const savedHospitals = (await Promise.all(savedHospitalPromises)).filter(hospital => hospital !== null);
+
+
+      res.status(200).json(savedHospitals);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: "Failed to get Saved Posts!" });
     }
   };

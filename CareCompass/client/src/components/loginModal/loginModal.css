@@ -1,0 +1,42 @@
+
+.backgrnd {
+    z-index: 999;
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalContain{
+    color: white;
+    background-color: #37B7C3;
+    height: 150px;
+    width: 300px;
+    text-align: center;
+    padding-top: 20px;
+    border-radius: 5px;
+}
+
+.close{
+    cursor: pointer;
+    margin-left: 250px;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    background-color: white;
+    border: none;
+    color: red;
+}
+
+.loginRedirect{
+    color: #071952;
+}
+
+.modalText{
+    font-size: 20px;
+    font-weight: 400;
+}

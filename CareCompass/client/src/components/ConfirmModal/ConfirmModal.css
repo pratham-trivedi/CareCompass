@@ -1,0 +1,20 @@
+.backgrnd .btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+}
+
+.backgrnd .btns button{
+    padding: 10px;
+    margin-top: 30px;
+    width: 60px;
+    font-size: 20px;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.backgrnd .btns .yesBtn{
+   background-color:red;
+}

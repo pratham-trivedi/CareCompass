@@ -11,7 +11,7 @@ import NewHospitalPage from "./routes/newHospitalPage/NewHospitalPage"
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 import About from "./routes/about/about";
 import Contact from "./routes/contact/contact";
-import { singlePageLoader, listPageLoader , googleSinglePageLoader} from "./lib/loaders";
+import { singlePageLoader, listPageLoader , googleSinglePageLoader, profilePageLoader} from "./lib/loaders";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,7 +28,7 @@ const router = createBrowserRouter(
       <Route path="/:id" loader={singlePageLoader} element={<SinglePage />} />
     </Route>
     <Route path="/" element={<RequireAuth />} >
-      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/profile" loader={profilePageLoader} element={<ProfilePage />} />
       <Route path="/profile/update" element={<ProfileUpdatePage />} />
      </Route>
     </>
