@@ -22,5 +22,6 @@ app.use("/api/googledata", googledataRoute);
 app.use("/api/review", reviewRoute);
 
 app.listen(5100, () => {
-    console.log("Server is readyt");
+    console.log("Server is ready");
+    console.log(process.env.CLIENT_URL);
 });
